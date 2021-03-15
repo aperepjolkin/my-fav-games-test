@@ -17,13 +17,17 @@ namespace MyFavoriteGames.Services
         public string GetGamesList()
         {
             var json = GetTopGameListFromPublicService();
-            return String.Empty;
+            return JsonConvert.SerializeObject(json.Result, Formatting.None,
+                        new JsonSerializerSettings()
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        });
         }
         /// <summary>
-        /// Read games json data from public service
+        /// Read games json data from public service.
         /// </summary>
         /// <returns></returns>
-        private async Task<List<Game>> GetTopGameListFromPublicService()
+        private async Task<Game[]> GetTopGameListFromPublicService()
         {
             Game[] gamesList = null;
             try {
@@ -34,7 +38,7 @@ namespace MyFavoriteGames.Services
             {
                 // todo logger
             }
-            return gamesList.ToList();
+            return gamesList;
         }
     }
 }
