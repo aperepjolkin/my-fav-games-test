@@ -1,5 +1,7 @@
 <p>games-list-table works!</p>
  <div class="form-group">   
-    <label>Game Title</label>
-    
+      <div *ngFor="let game of data">
+        <label>Game Title</label>
+            <p>{{game.Name}}<p>
+      </div>
 </div> 

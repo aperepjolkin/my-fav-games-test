@@ -8,10 +8,17 @@ import { GameService } from '../shared/game.service';
 })
 export class GamesListTableComponent implements OnInit {
 
+  public data;
   constructor(public service:GameService) { }
 
   ngOnInit(): void {
-    this.service.getGamesList();
+    this.service.getGamesList().subscribe(
+      res => {
+        console.log(res);
+        this.data = res ;
+      },
+      err => {console.log(err);}
+    );
   }
 
 }

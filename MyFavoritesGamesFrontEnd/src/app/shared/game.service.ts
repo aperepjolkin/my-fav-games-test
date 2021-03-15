@@ -13,8 +13,6 @@ export class GameService {
   data: Game = new Game();
 
   getGamesList() {
-  
-    let data = this.http.get(this.baseURL).subscribe();
-    return '';
+     return this.http.get(this.baseURL);
   }
 }
