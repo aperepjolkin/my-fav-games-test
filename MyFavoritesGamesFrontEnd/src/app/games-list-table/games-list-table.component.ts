@@ -11,6 +11,7 @@ export class GamesListTableComponent implements OnInit {
   constructor(public service:GameService) { }
 
   ngOnInit(): void {
+    this.service.getGamesList();
   }
 
 }
