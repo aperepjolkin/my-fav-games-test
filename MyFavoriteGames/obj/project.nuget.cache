@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "pzo43MOEBiRWcMmSkfiINHqR3hIm1Dhf7s/R6z7xFyr9Un8wpAN0C7mHE5JbwIzfikybmHsY+34XJ7DZZD3e4A==",
+  "success": true,
+  "projectFilePath": "C:\\AP\\Projects\\MyFavoriteGames\\MyFavoriteGames\\MyFavoriteGames.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ADMIN\\.nuget\\packages\\igdb\\2.0.1\\igdb.2.0.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\restease\\1.5.0\\restease.1.5.0.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512"
+  ],
+  "logs": []
+}
