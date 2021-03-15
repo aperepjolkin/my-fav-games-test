@@ -2,6 +2,10 @@
  <div class="form-group">   
       <div *ngFor="let game of data">
         <label>Game Title</label>
-            <p>{{game.Name}}<p>
+         <p>{{game.Name}}<p>
+          <label>Year</label>
+          <p>{{game.FirstReleaseDate}}<p>
+           <label>Average Rating</label>
+           <p>{{game.TotalRating}}<p></p>
       </div>
 </div> 

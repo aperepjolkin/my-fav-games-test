@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace MyFavoriteGames.Models
@@ -15,6 +16,10 @@ namespace MyFavoriteGames.Models
         public int? RatingCount { get; set; }
 
         public string Url { get; set; }
+
+        public double? TotalRating { get; set; }
+
+        public DateTimeOffset? FirstReleaseDate { get; set; }
 
         public override string ToString() => JsonSerializer.Serialize<Game>(this);
     }

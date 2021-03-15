@@ -32,7 +32,7 @@ namespace MyFavoriteGames.Services
             Game[] gamesList = null;
             try {
                 var igdb = new IGDBClient("lo19qy9izg5f0y1afhhhdtbp5gncvx", "g5be9aemm0l5z4xwgo64upt8he37xo");
-                gamesList = await igdb.QueryAsync<Game>(IGDBClient.Endpoints.Games, query: "fields id,name,rating; limit 5; sort rating desc;");
+                gamesList = await igdb.QueryAsync<Game>(IGDBClient.Endpoints.Games, query: "fields id,name,rating,first_release_date,total_rating; limit 5; sort rating asc;");
             }
             catch (Exception ex)
             {
