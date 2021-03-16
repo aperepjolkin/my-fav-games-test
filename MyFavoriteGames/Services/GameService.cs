@@ -14,9 +14,22 @@ namespace MyFavoriteGames.Services
 {
     public class GameService
     {
+
+        private readonly string CLIENT_ID = "lo19qy9izg5f0y1afhhhdtbp5gncvx";
+        private readonly string CLIENT_SECRET = "g5be9aemm0l5z4xwgo64upt8he37xo";
         public string GetGamesList()
         {
             var json = GetTopGameListFromPublicService();
+            return JsonConvert.SerializeObject(json.Result, Formatting.None,
+                        new JsonSerializerSettings()
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        });
+        }
+
+        public string GetTwentyGamesList()
+        {
+            var json = GetTwentyGamesListFromPublicService();
             return JsonConvert.SerializeObject(json.Result, Formatting.None,
                         new JsonSerializerSettings()
                         {
@@ -31,8 +44,23 @@ namespace MyFavoriteGames.Services
         {
             Game[] gamesList = null;
             try {
-                var igdb = new IGDBClient("lo19qy9izg5f0y1afhhhdtbp5gncvx", "g5be9aemm0l5z4xwgo64upt8he37xo");
+                var igdb = new IGDBClient(CLIENT_ID, CLIENT_SECRET);
                 gamesList = await igdb.QueryAsync<Game>(IGDBClient.Endpoints.Games, query: "fields id,name,rating,first_release_date,total_rating; limit 5; sort rating asc;");
+            }
+            catch (Exception ex)
+            {
+                // todo logger
+            }
+            return gamesList;
+        }
+
+        private async Task<Game[]> GetTwentyGamesListFromPublicService()
+        {
+            Game[] gamesList = null;
+            try
+            {
+                var igdb = new IGDBClient(CLIENT_ID, CLIENT_SECRET);
+                gamesList = await igdb.QueryAsync<Game>(IGDBClient.Endpoints.Games, query: "fields id,name,rating,first_release_date,total_rating; limit 20; sort rating asc;");
             }
             catch (Exception ex)
             {

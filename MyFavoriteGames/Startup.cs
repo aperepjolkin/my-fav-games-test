@@ -64,6 +64,11 @@ namespace MyFavoriteGames
                     var json = app.ApplicationServices.GetService<GameService>().GetGamesList();  
                     return context.Response.WriteAsync(json);
                 });
+                endpoints.MapGet("/gamesList20", (context) =>
+                {
+                    var json = app.ApplicationServices.GetService<GameService>().GetTwentyGamesList();
+                    return context.Response.WriteAsync(json);
+                });
             });
         }
     }

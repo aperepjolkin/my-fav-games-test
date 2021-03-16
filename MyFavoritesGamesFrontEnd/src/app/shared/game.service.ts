@@ -9,7 +9,7 @@ export class GameService {
 
   constructor(private http:HttpClient) { }
 
-  readonly baseURL = 'https://localhost:44372/games'
+  readonly baseURL = 'https://localhost:44372/gamesList20'
   data: Game = new Game();
 
   getGamesList() {
