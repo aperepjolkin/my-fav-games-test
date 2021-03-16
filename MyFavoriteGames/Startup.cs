@@ -1,11 +1,16 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyFavoriteGames.DAL;
+using MyFavoriteGames.Mapping;
 using MyFavoriteGames.Models;
+using MyFavoriteGames.Reposiotry;
 using MyFavoriteGames.Services;
 using System;
 using System.Collections.Generic;
@@ -30,6 +35,24 @@ namespace MyFavoriteGames
             services.AddRazorPages();
             services.AddTransient<GameService>();
             services.AddCors();
+            services.AddDbContext<GameContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            ) ;
+            services.AddControllers();
+            services.AddSwaggerGen();
+           
+           services.AddAutoMapper(typeof(Startup));
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<IGameRepository, GameRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +61,15 @@ namespace MyFavoriteGames
             app.UseCors(options => options.WithOrigins("http://localhost:4200")
                .AllowAnyMethod()
                .AllowAnyHeader());
+
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -59,6 +91,7 @@ namespace MyFavoriteGames
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
                 endpoints.MapGet("/games", (context) =>
                 {
                     var json = app.ApplicationServices.GetService<GameService>().GetGamesList();  
