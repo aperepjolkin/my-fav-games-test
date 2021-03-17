@@ -16,8 +16,6 @@ export class GamesRatingTableComponent implements OnInit {
   ngOnInit(): void {
     this.service.getGamesDB().subscribe(
       res => {
-        console.log(res);
-       
         this.gamesList = res;
    /*      this.data.forEach(element => {
           this.gamesList.push({Id:element.PublicGameID,Title: element.Name,Rating:element.Rating})

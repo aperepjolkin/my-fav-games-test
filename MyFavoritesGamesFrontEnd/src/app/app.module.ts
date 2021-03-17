@@ -9,6 +9,8 @@ import { AgGridModule } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
 import { GamesRatingTableComponent } from './games-rating-table/games-rating-table.component';
 import { GameRatingComponent } from './game-rating/game-rating.component';
+import { AppRoutingModule } from './app-routing.module';
+import { GamesDashboardComponent } from './games-dashboard/games-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { GameRatingComponent } from './game-rating/game-rating.component';
     TopFiveGamesComponent,
     GamesListTableComponent,
     GamesRatingTableComponent,
-    GameRatingComponent
+    GameRatingComponent,
+    GamesDashboardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    AppRoutingModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

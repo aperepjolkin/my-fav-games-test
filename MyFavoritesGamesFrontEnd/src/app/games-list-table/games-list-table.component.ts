@@ -22,7 +22,7 @@ export class GamesListTableComponent implements OnInit {
   ngOnInit(): void {
     this.service.getGamesList().subscribe(
       res => {
-        console.log(res);
+
         let gamesList = [];
         this.data = res;
         this.data.forEach(element => {

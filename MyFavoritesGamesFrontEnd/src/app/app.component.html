@@ -1,4 +1,22 @@
 <div class="container">
-  <app-games-list-table></app-games-list-table>
-  <app-games-rating-table></app-games-rating-table> 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">My favorite games</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link btn" href="#" routerLink="/gamesdashboard">Dashboard</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link btn" href="#" routerLink="/gameslist">Games List</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link" href="#" routerLink="/publicgameslist">Games TOP 20 List (IGDB Service data)</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
 </div>
