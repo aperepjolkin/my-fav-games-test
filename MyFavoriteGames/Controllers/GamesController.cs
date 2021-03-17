@@ -4,6 +4,7 @@ using AutoMapper;
 using MyFavoriteGames.Models;
 using Newtonsoft.Json;
 using MyFavoriteGames.Services;
+using System;
 
 namespace MyFavoriteGames.Controllers
 {
@@ -36,6 +37,30 @@ namespace MyFavoriteGames.Controllers
 
         }
 
+        [HttpGet]
+        public string Get(int id)
+        {
+            var gameObj = _gameService.FindGameInDatabseByID(id);
+            if (gameObj != null)
+            {
+                return JsonConvert.SerializeObject(gameObj);
+            }
+            return JsonConvert.SerializeObject(false);
+
+        }
+
+        [HttpGet]
+        [Route("{name}")]
+        public string GetAll()
+        {
+            var gamesList = _gameService.GetAllGames();
+            if (gamesList != null)
+            {
+                return JsonConvert.SerializeObject(gamesList);
+            }
+            return JsonConvert.SerializeObject(false);
+
+        }
 
     }
 }

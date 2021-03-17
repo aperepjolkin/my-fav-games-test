@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from '../shared/game.service';
+
 import { DatePipe } from '@angular/common';
+import { GameService } from '../shared/game.service';
 
 @Component({
   selector: 'app-games-list-table',

@@ -7,12 +7,16 @@ import { GamesListTableComponent } from './games-list-table/games-list-table.com
 import { HttpClientModule } from '@angular/common/http';
 import { AgGridModule } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
+import { GamesRatingTableComponent } from './games-rating-table/games-rating-table.component';
+import { GameRatingComponent } from './game-rating/game-rating.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopFiveGamesComponent,
-    GamesListTableComponent
+    GamesListTableComponent,
+    GamesRatingTableComponent,
+    GameRatingComponent
   ],
   imports: [
     BrowserModule,

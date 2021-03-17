@@ -1,0 +1,23 @@
+<h3>Game rating</h3>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Email</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of gamesList"> 
+        <th scope="row">{{game.ID}}</th>
+        <td><a routerLink="/rating">{{game.PublicGameID}}</a></td>
+        <td>{{game.Title}}</td>
+        <td>{{game.Email}}</td>
+        <td>{{game.Rating}}</td>
+        <td>{{game.Comment}}</td>
+      </tr>
+    </tbody>
+  </table>

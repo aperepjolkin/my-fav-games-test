@@ -72,6 +72,10 @@ namespace MyFavoriteGames.Services
                 }
 
         }
-  
+
+        public List<GameEntity> GetAllGames()
+        {
+            return _gameRepository.GetAll().ToList();
+        }
     }
 }
