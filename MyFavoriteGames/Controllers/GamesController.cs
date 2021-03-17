@@ -38,6 +38,7 @@ namespace MyFavoriteGames.Controllers
         }
 
         [HttpGet]
+        [Route("{id:int}")]
         public string Get(int id)
         {
             var gameObj = _gameService.FindGameInDatabseByID(id);

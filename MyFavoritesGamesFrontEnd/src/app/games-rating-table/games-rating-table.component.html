@@ -14,7 +14,7 @@
     <tbody>
       <tr *ngFor="let game of gamesList"> 
         <th scope="row">{{game.ID}}</th>
-        <td><a routerLink="/rating">{{game.PublicGameID}}</a></td>
+        <td><a routerLink="/rating/{{game.PublicGameID}}">{{game.PublicGameID}}</a></td>
         <td>{{game.Title}}</td>
         <td>{{game.Email}}</td>
         <td>{{game.Rating}}</td>

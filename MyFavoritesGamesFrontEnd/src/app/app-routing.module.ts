@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'gamesdashboard', component: GamesDashboardComponent },
   { path: 'gameslist', component: GamesRatingTableComponent },
   { path: 'publicgameslist', component: GamesListTableComponent },
-  { path: 'rating', component: GameRatingComponent }
+  { path: 'rating/:id', component: GameRatingComponent }
 ];
 
 @NgModule({
