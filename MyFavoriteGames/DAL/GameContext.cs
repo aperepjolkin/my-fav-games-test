@@ -10,16 +10,20 @@ namespace MyFavoriteGames.DAL
     public class GameContext : DbContext
     {
 
-        public GameContext()
-        {
-
-        }
         public GameContext(DbContextOptions<GameContext> options) : base(options)
         {
 
         }
 
         public DbSet<GameEntity> Games { get; set; }
+        public DbSet<RatingEntity> Ratings { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<GameEntity>()
+                  .HasMany(b => b.Ratings)
+                  .WithOne();
+        }
 
     }
 }

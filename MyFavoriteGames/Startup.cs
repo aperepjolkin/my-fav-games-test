@@ -33,7 +33,7 @@ namespace MyFavoriteGames
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddTransient<GameService>();
+            services.AddTransient<GameIGDbAPIService>();
             services.AddCors();
             services.AddDbContext<GameContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
@@ -50,8 +50,11 @@ namespace MyFavoriteGames
 
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
-
+         
             services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IGameIGDbAPIService, GameIGDbAPIService>();
+
 
         }
 
@@ -94,12 +97,12 @@ namespace MyFavoriteGames
                 endpoints.MapControllers();
                 endpoints.MapGet("/games", (context) =>
                 {
-                    var json = app.ApplicationServices.GetService<GameService>().GetGamesList();  
+                    var json = app.ApplicationServices.GetService<GameIGDbAPIService>().GetGamesList();  
                     return context.Response.WriteAsync(json);
                 });
                 endpoints.MapGet("/gamesList20", (context) =>
                 {
-                    var json = app.ApplicationServices.GetService<GameService>().GetTwentyGamesList();
+                    var json = app.ApplicationServices.GetService<GameIGDbAPIService>().GetTwentyGamesList();
                     return context.Response.WriteAsync(json);
                 });
             });

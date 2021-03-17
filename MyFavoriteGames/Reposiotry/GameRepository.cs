@@ -14,13 +14,13 @@ namespace MyFavoriteGames.Reposiotry
         private readonly GameContext _context;
         // Create a field to store the mapper object
      
-        public GameRepository()
+        public GameRepository(GameContext context)
         {
-            _context = new GameContext();
+            _context = context;
         }
         public void Delete(int GameID)
         {
-            GameEntity game = _context.Games.Find(GameID);
+            GameEntity game = _context.Games.SingleOrDefault(g => g.PublicGameID == GameID);
             _context.Games.Remove(game);
         }
 
@@ -31,7 +31,7 @@ namespace MyFavoriteGames.Reposiotry
 
         public GameEntity GetById(int GameID)
         {
-            return _context.Games.Find(GameID);
+            return _context.Games.SingleOrDefault(g => g.PublicGameID == GameID);
         }
 
         public void Insert(GameEntity game)

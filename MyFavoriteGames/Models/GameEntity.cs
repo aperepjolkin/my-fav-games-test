@@ -12,12 +12,16 @@ namespace MyFavoriteGames.Models
         [Key]
         public int ID { get; set; }
 
+        public int PublicGameID { get; set; }
+
         public string Title { get; set; }
 
-        public int Rating { get; set; }
+        public List<RatingEntity> Ratings { get; set; }
 
         public string Email { get; set; }
         [Column(TypeName  = "nvarchar(250)")]
         public string Comment { get; set; }
+
+  
     }
 }

@@ -12,6 +12,7 @@ namespace MyFavoriteGames.Mapping
         public MappingProfile()
         {
             // Add as many of these lines as you need to map your objects
+            //CreateMap<GameEntity, GameEntityDTO>();
             CreateMap<GameEntityDTO, GameEntity>();
         }
     }

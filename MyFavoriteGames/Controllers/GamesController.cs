@@ -1,13 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyFavoriteGames.Reposiotry;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+
 using AutoMapper;
 using MyFavoriteGames.Models;
 using Newtonsoft.Json;
+using MyFavoriteGames.Services;
 
 namespace MyFavoriteGames.Controllers
 {
@@ -15,27 +11,31 @@ namespace MyFavoriteGames.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private IGameRepository _gameRepository;
+        private readonly IGameService _gameService;
         // Create a field to store the mapper object
         private readonly IMapper _mapper;
         public GamesController(
-            IGameRepository gameRepository, 
+            IGameService gameService, 
             IMapper mapper)
         {
-            _gameRepository = gameRepository;
+            _gameService = gameService;
             _mapper = mapper;
         }
 
         [HttpPost]
         public string Post([FromBody] GameEntityDTO game)
         {
-            var model = _mapper.Map<GameEntity>(game);
-            
-            _gameRepository.Update(model);
-           
-            return JsonConvert.SerializeObject(model);
+            var gameObj = _gameService.FindGameInDatabseByID(game.ID);
+            if (gameObj != null)
+            {
+                // Add rating db record 
+                var model = _mapper.Map<GameEntity>(game);
+                _gameService.AddRaiting(model,game.Rating);
+            }
+            return JsonConvert.SerializeObject("ok");
+
         }
-      
+
 
     }
 }
