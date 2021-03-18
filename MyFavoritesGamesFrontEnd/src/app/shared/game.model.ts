@@ -1,5 +1,7 @@
 export class Game {
-    gameTitle:string;
+    ID:number;
+    PublicGameID:number;
+    Title:string;
     Name:string; 
     Email: string;
     Comment: string; 

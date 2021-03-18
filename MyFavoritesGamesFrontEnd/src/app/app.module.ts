@@ -11,6 +11,8 @@ import { GamesRatingTableComponent } from './games-rating-table/games-rating-tab
 import { GameRatingComponent } from './game-rating/game-rating.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GamesDashboardComponent } from './games-dashboard/games-dashboard.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { GamesDashboardComponent } from './games-dashboard/games-dashboard.compo
     BrowserModule,
     HttpClientModule,
     AgGridModule.withComponents([]),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
